@@ -395,4 +395,52 @@ for (let i = 0; i < mevalar.length; i++) {
 const colors = ["qizil", , "yashil"];
 console.log(colors[1]); // undifined qaytaradi, chunki joy bosh
 
+const newColors = [...colors]; // spread operatori yordamida arrayni nusxalash
+console.log(newColors);
 
+// Clonlash. Shallow va Deep cloning
+// primitive turlarni clonlash oddiy, qiymatni o'ziga tenglashtirish kifoya
+let r = 10;
+let d = r; // r ning qiymati d ga berildi, r va d mustaqil o'zgaruvchilar, biri o'zgartirilsa, ikkinchisi o'zgarmaydi
+console.log(d); // primitivlarda clonlash avtomatik amalga oshadi
+
+// non-primitive - Reference (manzil) orqali saqlanadi. O‘zgaruvchi faqat obyekt manzilini ushlab turadi, ichki qiymat esa xotirada boshqa joyda turadi.
+let arr1 = [1, 2, 3];
+let arr2 = arr1; // reference manzil berildi
+arr2[0] = 10; // arr2 ni o'zgartirish arr1 ni ham o'zgartiradi, chunki ikkalasi ham bir manzilga ishora qiladi
+console.log(arr1); // [10, 2, 3]
+
+// Shallow (yuzaki) clonlash -  obyekt/array ning birinchi darajadagi xususiyatlarini yangi obyektga/arrayga ko‘chirish.
+let m = [1,2,3];
+let b = m.slice();     // yuzaki nusxa
+let c = [...m];        // shu ham yuzaki nusxa
+b[0] = 99;
+console.log(m[0]); // 1  (asosiy arrayga ta'sir yo'q)
+
+
+// objectlarni clonelash
+function cloneObj(obj) {
+	const clone = {}
+	
+	for(let key in obj){
+		clone[key] = obj[key]
+	}
+	
+	return clone
+}
+
+// Deep clonlash - obyektning barcha darajadagi xususiyatlarini yangi obyektga ko‘chirish, shu jumladan ichki obyektlar va massivlar ham clonlanadi.
+
+// JSON usuli - oddiy va tezkor, lekin funksiyalar, undefined, Symbol va boshqa maxsus turlarni qo‘llab-quvvatlamaydi
+let obj1 = { a: 1, b: { c: 2 } };
+let obj2 = JSON.parse(JSON.stringify(obj1));
+
+obj2.b.c = 99;
+console.log(obj1.b.c); // 2 (mustaqil!)
+
+// srtucturedClone usuli - murakkab tuzilmalarni ham clonlash imkonini beradi, JSON usulidan farqli o'laroq, funksiyalar, undefined, Symbol va boshqa maxsus turlarni qo‘llab-quvvatlaydi
+let obje1 = { a: 1, b: { c: 2 } };
+let obje2 = structuredClone(obj1);
+
+obj2.b.c = 99;
+console.log(obj1.b.c); // 2
