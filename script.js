@@ -190,8 +190,8 @@ for (let xususiyat in talaba) {
 }
 
 // 5. for...of - massivlar, boshqa iteratsiya qilinadigan obyektlar ustida ishlash
-let mevalar = ["banan", "olma", "gilos"];
-for (let meva of mevalar) {
+let shirinmevalar = ["banan", "olma", "gilos"];
+for (let meva of shirinmevalar) {
   console.log(meva);
 }
 
@@ -364,3 +364,35 @@ let intervalid = setInterval(() => {
     clearInterval(intervalid);
   }
 }, 2000);
+
+// Array - bir nechta qiymatni bitta joyda saqlash uchun ishlatiladigan quti kabi
+let mevalar = ["mandarin", "tarvuz", "olma"];
+// arraydagi narsalarga murojaat qilish
+console.log(mevalar[2]);
+console.log(mevalar[0]);
+
+mevalar.push("uzum"); // arrayga yangi element qoshish
+console.log(mevalar);
+
+mevalar.pop(); // arraydan oxirgi elemntini olib tashlash
+console.log(mevalar);
+
+mevalar.shift("anor"); // array boshidan element olib tashlash
+console.log(mevalar);
+
+mevalar.unshift("anor"); //array boshiga element qoshish
+console.log(mevalar);
+
+mevalar.length; // array uzunligini qaytaradi
+console.log(mevalar);
+
+for (let i = 0; i < mevalar.length; i++) {
+  console.log(i + ":" + mevalar[i]);
+} // arrayni siklada aylantirish 
+
+
+// empty slots
+const colors = ["qizil", , "yashil"];
+console.log(colors[1]); // undifined qaytaradi, chunki joy bosh
+
+
