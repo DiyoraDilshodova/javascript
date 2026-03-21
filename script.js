@@ -73,9 +73,9 @@ if (typeof qiymat === "string") {
 // 3) OK - string qataradi, Cancel - null qaytaradi
 
 // Interpolatsiya (Template Literals) bactick (`${}`) bilan yoziladi
-let name = "Diyora";
-let age = 16;
-console.log(`Mening ismim ${name}, yoshim ${age}da`);
+let namee = "Diyora";
+let agee = 16;
+console.log(`Mening ismim ${namee}, yoshim ${agee}da`);
 
 // Operatorlar - amal bajaradigan amal yoki so'z
 
@@ -225,7 +225,7 @@ function hisobla() {
   console.log(y); // 5 chiqadi
 }
 hisobla();
-console.log(y); // xato, y aniqlanmaydi
+// console.log(y); // xato, y aniqlanmaydi
 
 // Return operatori - funksiya bajarilgandan keyin natija qaytarish uchun ishlatiladi, return ishlatilmasa funk. undefined qaytaradi
 function yigindi(a, b) {
@@ -288,12 +288,11 @@ console.log(Math.floor(number)); // sonni pastga yaxlitlaydi, natija number
 console.log(Math.ceil(number)); // sonni yaxlitlaydi, natija number
 console.log(number.toString()); // sonni stringga aylantiradi
 console.log(number.toExponential(2)); // sonni eksponensial formatga aylantiradi, natija string
-console.log(number.toPrecision(4)); // sonni belgilangan raqamlar soniga aylantiradi, natija string   
+console.log(number.toPrecision(4)); // sonni belgilangan raqamlar soniga aylantiradi, natija string
 console.log(Number.isInteger(number)); // son butunmi, true/false
 console.log(Number.isNaN(number)); // son NaN (Not a Number)mi, true/false
 console.log(Number.parseInt("123px")); // stringni butun soniga aylantiradi, natija number
-console.log(Number.parseFloat("123.45px")); // stringni onlik soniga aylantiradi, natija number 
-
+console.log(Number.parseFloat("123.45px")); // stringni onlik soniga aylantiradi, natija number
 
 // 3. Array metodlari
 let arr = ["olma", "banan", "apelsin"];
@@ -306,22 +305,62 @@ console.log(arr.pop()); // oxirgi elementni olib tashlaydi va qaytaradi
 console.log(arr.shift()); // boshidan elementni olib tashlaydi va qaytaradi
 console.log(arr.unshift("anor")); // boshiga element qo'shadi
 
-
 // 4. Object metodlari
 let person = {
   name: "Diyora",
   age: 16,
-}
+};
 
 console.log(Object.keys(person)); // kalitlarini olish ["name", "age"]
 console.log(Object.values(person)); // qiymatlarini olish ["Diyora", 16]
 console.log(Object.entries(person)); // kalit-qiymat juftliklarini olish [["name", "Diyora"], ["age", 16]]
 console.log(Object.assign({}, person, { city: "Tashkent" })); // yangi obyekt yaratadi, person obyektini nusxalaydi va city xususiyatini qo'shadi
 console.log(Object.freeze(person)); // obyektni muzlatadi, hech qanday o'zgarishlarga ruxsat bermaydi
-console.log(Object.isFrozen(person)); // obyekt muzlatilganmi, true/false   
+console.log(Object.isFrozen(person)); // obyekt muzlatilganmi, true/false
 
+// Callback va object destructuring
+// Callback — bu funksiya ichiga boshqa funksiyani argument sifatida berish va keyinroq uni ishlatish.
+function homeworkDone(callback) {
+  console.log("📘 Uy vazifamni qilyapman...");
 
+  setTimeout(() => {
+    console.log("✅ Uy vazifa tugadi!");
+    callback(); // Do'stni chaqiramiz
+  }, 2000);
+}
 
+function friendCall() {
+  console.log("📞 Do'sting qo'ng'iroq qildi: 'O'yinga chiqamizmi?'");
+}
 
+homeworkDone(friendCall);
 
+// Object destructuring - obyektning xususiyatlarini alohida o'zgaruvchilarga ajratish
+let user = {
+  name: "Diyora",
+  age: 16,
+  city: "Urgench",
+};
 
+// oddiy usul
+console.log(user.name);
+// destructuring usuli
+let { name, age, city } = user;
+console.log(name);
+console.log(age);
+console.log(city);
+
+// setTimeout va setInterval
+// setTimeout - berilgan vaqt o'tgach, bir marta kodni bajaradi
+setTimeout(() => {
+  console.log("bu xabar 3 soniyadan keyin chiqadi");
+}, 3000);
+// setInterval - berilgan vaqt oralig'ida kodni takrorlaydi
+let count = 0;
+let intervalid = setInterval(() => {
+  console.log("bu xabar 2 soniyada chiqadi");
+  count++;
+  if (count >= 5) {
+    clearInterval(intervalid);
+  }
+}, 2000);
