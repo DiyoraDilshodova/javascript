@@ -444,3 +444,106 @@ let obje2 = structuredClone(obj1);
 
 obj2.b.c = 99;
 console.log(obj1.b.c); // 2
+
+
+// OOP - Object Oriented Programming (Obyektga yo'naltirilgan dasturlash) - bu dasturlash paradigmasi bo'lib, unda kod obyektlar va ularning o'zaro ta'siri orqali tashkil etiladi.
+
+// OOP ning asosiy tushunchalari: class, object, inheritance, encapsulation, polymorphism.
+// OOP yordamida: kod tartibli, takrorlanish kamayadi, xatolarni topish osonlashadi, yangi funksiyalarni oson qo'shish mumkin
+
+// this - obyektining o'zini ifodalovchi kalit soz, u kopincha classlarda ishlatiladi
+const person1 = {
+  name: "Diyora",
+  greet() {
+    console.log("Salom, mening ismim " + this.name);
+  }
+};
+person1.greet(); // Salom, mening ismim Diyora
+
+// Class - obyektlarni yaratish uchun shablon
+class Car {
+  constructor(make, model) { // konstruktor - class dan yangi obyekt yaratishda chaqiriladi, obyektning xususiyatlarini belgilash uchun ishlatiladi
+    this.make = make;
+    this.model = model;
+  } 
+  info() { // method - class ichida funksiya sifatida yoziladi, obyektning xatti-harakatlarini belgilaydi
+    console.log(`Bu ${this.make} markasidagi ${this.model} modelidir.`);
+  }
+}
+const myCar = new Car("Toyota", "Corolla"); // yangi obyekt yaratish
+myCar.info(); // Bu Toyota markasidagi Corolla modelidir.
+
+// funksiya ichida - this
+function showThis() {
+  console.log(this);
+} 
+showThis(); // global obyekt (window) ni ko'rsatadi, node da undefined qaytaradi
+
+// obyektda - this
+const obj = {model: "M5", showThis() {
+  console.log(this);
+}};
+obj.showThis(); // obj ni ko'rsatadi, chunki this obj ga ishora qiladi
+
+
+// OOP da 4 ta asosiy tamoyil
+// 1) Encapsulation (Inkapsulyatsiya) -Ma’lumot va uni boshqaruvchi funksiyalarni bir joyda saqlash.
+class BnakAccount {
+  constructor(owner, balance) {
+    this.owner = owner;
+    this.balance = balance;
+  }
+  deposit() {
+    console.log("Pul qo'shildi");
+  }
+}
+const myAccount = new BnakAccount("Diyora", 1000);
+myAccount.deposit();
+// 2) Inheritance (Merosi) - bir classning xususiyatlari va metodlarini boshqa classga meros qilib berish
+class Animal {
+  eat() {
+    console.log("Hayvon ovqatlanmoqda");
+  }
+}
+class Dog extends Animal {
+  bark() {
+    console.log("Hav-hav!");
+  }
+}
+const myDog = new Dog();
+myDog.eat(); // Hayvon ovqatlanmoqda
+myDog.bark(); // Hav-hav! 
+
+// 3) Polymorphism (Polimorfizm) - bir nechta classlarda bir xil nomdagi metodlarni turli xil ishlatish imkonini beruvchi tamoyil
+class Shape {
+  area() {
+    console.log("Shaklning yuzasi hisoblanmoqda");
+  }
+}
+
+class Circle extends Shape {
+  area() {
+    console.log("Doira yuzasi: πr²");
+  }
+}
+
+class Rectangle extends Shape {
+  area() {
+    console.log("To'rtburchak yuzasi: uzunlik x kenglik");
+  }
+}
+
+const myCircle = new Circle();
+const myRectangle = new Rectangle();  
+myCircle.area(); // Doira yuzasi: πr²
+myRectangle.area(); // To'rtburchak yuzasi: uzunlik x kenglik
+
+// 4) Abstraction (Abstraksiya) - murakkab tizimlarni soddalashtirish, faqat kerakli ma'lumotlarni ko'rsatish va ichki ishlarni yashirish tamoyili
+class Car {
+  start() {
+    console.log("Mashina ishga tushmoqda...");
+  }
+}
+
+const car = new car();
+car.start(); // Mashina ishga tushmoqda...
