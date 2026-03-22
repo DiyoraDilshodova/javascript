@@ -388,8 +388,7 @@ console.log(mevalar);
 
 for (let i = 0; i < mevalar.length; i++) {
   console.log(i + ":" + mevalar[i]);
-} // arrayni siklada aylantirish 
-
+} // arrayni siklada aylantirish
 
 // empty slots
 const colors = ["qizil", , "yashil"];
@@ -411,22 +410,21 @@ arr2[0] = 10; // arr2 ni o'zgartirish arr1 ni ham o'zgartiradi, chunki ikkalasi 
 console.log(arr1); // [10, 2, 3]
 
 // Shallow (yuzaki) clonlash -  obyekt/array ning birinchi darajadagi xususiyatlarini yangi obyektga/arrayga ko‘chirish.
-let m = [1,2,3];
-let b = m.slice();     // yuzaki nusxa
-let c = [...m];        // shu ham yuzaki nusxa
+let m = [1, 2, 3];
+let b = m.slice(); // yuzaki nusxa
+let c = [...m]; // shu ham yuzaki nusxa
 b[0] = 99;
 console.log(m[0]); // 1  (asosiy arrayga ta'sir yo'q)
 
-
 // objectlarni clonelash
 function cloneObj(obj) {
-	const clone = {}
-	
-	for(let key in obj){
-		clone[key] = obj[key]
-	}
-	
-	return clone
+  const clone = {};
+
+  for (let key in obj) {
+    clone[key] = obj[key];
+  }
+
+  return clone;
 }
 
 // Deep clonlash - obyektning barcha darajadagi xususiyatlarini yangi obyektga ko‘chirish, shu jumladan ichki obyektlar va massivlar ham clonlanadi.
@@ -445,7 +443,6 @@ let obje2 = structuredClone(obj1);
 obj2.b.c = 99;
 console.log(obj1.b.c); // 2
 
-
 // OOP - Object Oriented Programming (Obyektga yo'naltirilgan dasturlash) - bu dasturlash paradigmasi bo'lib, unda kod obyektlar va ularning o'zaro ta'siri orqali tashkil etiladi.
 
 // OOP ning asosiy tushunchalari: class, object, inheritance, encapsulation, polymorphism.
@@ -456,17 +453,19 @@ const person1 = {
   name: "Diyora",
   greet() {
     console.log("Salom, mening ismim " + this.name);
-  }
+  },
 };
 person1.greet(); // Salom, mening ismim Diyora
 
 // Class - obyektlarni yaratish uchun shablon
 class Car {
-  constructor(make, model) { // konstruktor - class dan yangi obyekt yaratishda chaqiriladi, obyektning xususiyatlarini belgilash uchun ishlatiladi
+  constructor(make, model) {
+    // konstruktor - class dan yangi obyekt yaratishda chaqiriladi, obyektning xususiyatlarini belgilash uchun ishlatiladi
     this.make = make;
     this.model = model;
-  } 
-  info() { // method - class ichida funksiya sifatida yoziladi, obyektning xatti-harakatlarini belgilaydi
+  }
+  info() {
+    // method - class ichida funksiya sifatida yoziladi, obyektning xatti-harakatlarini belgilaydi
     console.log(`Bu ${this.make} markasidagi ${this.model} modelidir.`);
   }
 }
@@ -476,15 +475,17 @@ myCar.info(); // Bu Toyota markasidagi Corolla modelidir.
 // funksiya ichida - this
 function showThis() {
   console.log(this);
-} 
+}
 showThis(); // global obyekt (window) ni ko'rsatadi, node da undefined qaytaradi
 
 // obyektda - this
-const obj = {model: "M5", showThis() {
-  console.log(this);
-}};
+const obj = {
+  model: "M5",
+  showThis() {
+    console.log(this);
+  },
+};
 obj.showThis(); // obj ni ko'rsatadi, chunki this obj ga ishora qiladi
-
 
 // OOP da 4 ta asosiy tamoyil
 // 1) Encapsulation (Inkapsulyatsiya) -Ma’lumot va uni boshqaruvchi funksiyalarni bir joyda saqlash.
@@ -512,7 +513,7 @@ class Dog extends Animal {
 }
 const myDog = new Dog();
 myDog.eat(); // Hayvon ovqatlanmoqda
-myDog.bark(); // Hav-hav! 
+myDog.bark(); // Hav-hav!
 
 // 3) Polymorphism (Polimorfizm) - bir nechta classlarda bir xil nomdagi metodlarni turli xil ishlatish imkonini beruvchi tamoyil
 class Shape {
@@ -534,7 +535,7 @@ class Rectangle extends Shape {
 }
 
 const myCircle = new Circle();
-const myRectangle = new Rectangle();  
+const myRectangle = new Rectangle();
 myCircle.area(); // Doira yuzasi: πr²
 myRectangle.area(); // To'rtburchak yuzasi: uzunlik x kenglik
 
@@ -547,3 +548,51 @@ class Car {
 
 const car = new car();
 car.start(); // Mashina ishga tushmoqda...
+
+// DOM (Document Object Model) - HTML hujjatning obyektga aylantirilgan ko'rinishi, JavaScript orqali veb sahifani dinamik ravishda o'zgartirish imkonini beradi
+// DOM orqali elementlarni tanlash, o'zgartirish, qo'shish va o'chirish mumkin
+
+// Metodlar
+// document.getElementById() - ID bo'yicha elementni tanlash
+// document.getElementsByClassName() - class bo'yicha elementlarni tanlash
+const items = document.getElementsByClassName("item");
+console.log(items.length); // 2
+const newDiv = document.createElement("div");
+newDiv.classList.add("item");
+document.body.appendChild(newDiv);
+console.log(items.length); // 3 !!! (avtomatik yangilandi)
+
+
+// document.getElementsByTagName() - teg bo'yicha elementlarni tanlash
+// document.querySelector() - CSS selektoriga mos keladigan birinchi elementni tanlash
+// document.querySelectorAll() - CSS selektoriga mos keladigan barcha elementlarni tanlash
+const boxes = document.querySelectorAll(".box");
+console.log(boxes.length); // 2
+const newBox = document.createElement("div");
+newBox.classList.add("box");
+document.body.appendChild(newBox);
+console.log(boxes.length); // 2 !!! (o‘zgarmaydi)
+
+
+// DOM elemntlarini o'zgartirish
+// element.textContent - elementning matnini o'zgartirish
+// element.innerHTML - elementning ichki HTML kodini o'zgartirish
+// element.style - elementning uslubini o'zgartirish
+const box = document.getElementById("box");
+// camelCase orqali property
+box.style.backgroundColor = "lightblue";
+box.style.width = "200px";
+box.style.height = "100px";
+// transform yoki complex qiymatlar ham string bo'lib beriladi
+box.style.transform = "translateX(20px) rotate(5deg)";
+
+
+// DOM elementlarini yaratish va qo'shish
+// const newEl = document.createElement() - yangi element yaratish
+// newEl.textContent = "Yangi element"; - elementga matn qo'shish
+// parentEl.appendChild(newEl) - yangi elementni ota elementga qo'shish
+
+
+// DOM elemntlarini o'chirish
+// parentEl.removeChild(childEl) - ota elementdan bolani o'chirish
+// childEl.remove() - elementni o'chirish
