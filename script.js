@@ -248,7 +248,7 @@ function salomBer() {
 // 1) funksiya nomi o'zgaruvchida turadi
 // 2) faqat e'lon qilinagndan keyin ishlaydi
 // 3) kopincha callback yoki dynamic funk. yaratishda ishlatiladi
-const assalom = function () {
+const assalom = function() {
   console.log("salom");
 };
 assalom();
@@ -596,3 +596,11 @@ box.style.transform = "translateX(20px) rotate(5deg)";
 // DOM elemntlarini o'chirish
 // parentEl.removeChild(childEl) - ota elementdan bolani o'chirish
 // childEl.remove() - elementni o'chirish
+
+// DOM da yuqoriga yoki pastga o'tish
+el.parentElement       // ota element
+el.children            // bolalar ro‘yxati
+el.firstElementChild   // birinchi bola
+el.lastElementChild    // oxirgi bola
+el.nextElementSibling  // keyingi aka-uka
+el.previousElementSibling // oldingi aka-uka
