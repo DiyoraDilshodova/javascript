@@ -248,7 +248,7 @@ function salomBer() {
 // 1) funksiya nomi o'zgaruvchida turadi
 // 2) faqat e'lon qilinagndan keyin ishlaydi
 // 3) kopincha callback yoki dynamic funk. yaratishda ishlatiladi
-const assalom = function() {
+const assalom = function () {
   console.log("salom");
 };
 assalom();
@@ -562,7 +562,6 @@ newDiv.classList.add("item");
 document.body.appendChild(newDiv);
 console.log(items.length); // 3 !!! (avtomatik yangilandi)
 
-
 // document.getElementsByTagName() - teg bo'yicha elementlarni tanlash
 // document.querySelector() - CSS selektoriga mos keladigan birinchi elementni tanlash
 // document.querySelectorAll() - CSS selektoriga mos keladigan barcha elementlarni tanlash
@@ -572,7 +571,6 @@ const newBox = document.createElement("div");
 newBox.classList.add("box");
 document.body.appendChild(newBox);
 console.log(boxes.length); // 2 !!! (o‘zgarmaydi)
-
 
 // DOM elemntlarini o'zgartirish
 // element.textContent - elementning matnini o'zgartirish
@@ -586,21 +584,69 @@ box.style.height = "100px";
 // transform yoki complex qiymatlar ham string bo'lib beriladi
 box.style.transform = "translateX(20px) rotate(5deg)";
 
-
 // DOM elementlarini yaratish va qo'shish
 // const newEl = document.createElement() - yangi element yaratish
 // newEl.textContent = "Yangi element"; - elementga matn qo'shish
 // parentEl.appendChild(newEl) - yangi elementni ota elementga qo'shish
-
 
 // DOM elemntlarini o'chirish
 // parentEl.removeChild(childEl) - ota elementdan bolani o'chirish
 // childEl.remove() - elementni o'chirish
 
 // DOM da yuqoriga yoki pastga o'tish
-el.parentElement       // ota element
-el.children            // bolalar ro‘yxati
-el.firstElementChild   // birinchi bola
-el.lastElementChild    // oxirgi bola
-el.nextElementSibling  // keyingi aka-uka
-el.previousElementSibling // oldingi aka-uka
+el.parentElement; // ota element
+el.children; // bolalar ro‘yxati
+el.firstElementChild; // birinchi bola
+el.lastElementChild; // oxirgi bola
+el.nextElementSibling; // keyingi aka-uka
+el.previousElementSibling; // oldingi aka-uka
+
+// Hodislar(listeners) - bu foydalanuvchi yoki tizim tomonidan yuz beradigan harakatlardir
+// 1. Sichqoncha harakatlari: click, mouseover, mouseout, mousemove
+// 2. Klaviatura harakatlari: keydown, keyup, keypress
+// 3. Touchscreen hodisalari: touchstart, touchmove, touchend
+// 4. Form harakatlari: submit, change, input
+// 5. Oyna harakatlari: load, resize, scroll
+// hodisalarni tinglash uchun addEventListener metodidan foydalaniladi
+element.addEventListener("click", function () {
+  console.log("element bosildi");
+});
+
+// Paramentrlar
+// 1. Hodisa nomi ("click", "mouseover" va h.k.)
+// 2. Callback funktsiya - hodisa yuz berganda bajariladigan kod bloki
+// 3. (ixtiyoriy) - hodisa qoplamasi (capture) yoki burilish (bubble) fazasida tinglashni belgilash uchun ishlatiladi
+
+// Event obyekt - hodisa sodir bo‘lganda, JavaScript Event obyektini callback funksiyaga uzatadi  
+document.addEventListener("keydown", (event) => {
+  console.log("bosilgan tugma:" + event.key);
+});
+// Event obyektidagi xususiyatlar:
+// event.type - hodisa turi
+// event.target - hodisa yuz bergan element
+// event.key - klaviatura hodisalarida bosilgan tugma
+// event.clientX, event.clientY - sichqoncha hodisalarida kursorning koordinatalari
+// event.preventDefault() - hodisaning standart harakatini to'xtatadi
+
+// Event Bubbling va propagation - hodisa bir elementda yuz berganda, u ota elementlarga ham tarqaladi (bubbling) yoki oldinga tarqaladi (capturing)
+// DOM ichida hodisalar quyidagi yo‘nalishda harakatlanadi:
+// 1. Capturing bosqichi – yuqoridan pastga (document → target)
+// 2. Target bosqichi – hodisa o‘zi sodir bo‘lgan elementda
+// 3. Bubbling bosqichi – pastdan yuqoriga (target → document)
+document.addEventListener("click", () => console.log("element bosildi"));
+document.querySelector("button").addEventListener("click", () => console.log("tugma bosildi")) // 
+// tugma bosilganda ikkala xabar ham chiqadi, chunki click hodisasi tugmadan document ga tarqaladi (bubbling)
+
+// Hodislarni To'xtatish
+// event.stopPropagation() -  hodisaning yuqoriga o‘tishini (bubbling) to‘xtatadi.
+
+
+// Form elementlari
+// Eventlari:
+// 1. submit - form yuborilganda yuz beradi
+// 2. change - form elementining qiymati o'zgarganda yuz beradi
+// 3. input - foydalanuvchi form elementiga ma'lumot kiritganda yuz beradi
+// 4. focus - form elementi fokusga kirganda yuz beradi
+// 5. blur - form elementi fokusdan chiqqanda yuz beradi
+// 6. reset - form qayta tiklanganda yuz beradi
+// 7. keydown, keyup - form elementida klaviatura harakati yuz berganda yuz beradi
