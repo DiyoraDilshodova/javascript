@@ -22,8 +22,6 @@ const Person = {
   married: false,
 };
 
-
-
 // 2) array
 let fruits = ["apple", "banana", "orange"];
 
@@ -36,22 +34,20 @@ function SalomBer() {
 console.log(typeof null); // object
 console.log(typeof []); // object
 
-
-
 // Window - brauzerdagi eng katta global obyekt, Interpolatsiya, Operatorlar
 // 1. alert()
-alert("o'chirildi") // ogohlantirish, xabar korsatadi
+// alert("o'chirildi"); // ogohlantirish, xabar korsatadi
 // 2. confirm()
-const result = confirm("ochirmoqchimisiz") // OK yoki Cancel boladi
-console.log(result);
+// const result = confirm("ochirmoqchimisiz"); // OK yoki Cancel boladi
+// console.log(result);
 // 3. prompt()
-let ism = prompt("ismingizmi kirting") // matn kiritishni so'raydi
-console.log(ism);
+// let ism = prompt("ismingizmi kirting"); // matn kiritishni so'raydi
+// console.log(ism);
 
 // Interpolatsiya - ``${}
-let firstName = "Diyora"
-let lastName = "Dilshodova"  
-let ages = 16
+let firstName = "Diyora";
+let lastName = "Dilshodova";
+let ages = 16;
 console.log(`My name is ${firstName} ${lastName}, i'm ${ages} years old`);
 
 // Operatorlar
@@ -62,20 +58,94 @@ console.log(`My name is ${firstName} ${lastName}, i'm ${ages} years old`);
 // c) Mantiqiy operatorlar
 // && - AND ikkalasi true bolsa true, || - OR bittasi true bolsa true, ! - NOT true bolsa false, false bolsa true
 
-let numberOfBooks = +prompt("nechta kitob o'qigansiz?") 
-const booksDB = {
-    count: numberOfBooks,
-    books: {},
-    authors: {},
-    genres: [],
-    private: false
+// let numberOfBooks = +prompt("nechta kitob o'qigansiz?");
+// const booksDB = {
+//   count: numberOfBooks,
+//   books: {},
+//   authors: {},
+//   genres: [],
+//   private: false,
+// };
+
+// let question1 = prompt("oxirgi o'qigan kitobingiz nomi?");
+// let rate1 = +prompt("kitobga qancha baho berasiz?");
+
+// let question2 = prompt("oxirgi o'qigan kitobingiz nomi?");
+// let rate2 = +prompt("kitobga qancha baho berasiz?");
+// booksDB.books[question1] = rate1;
+// booksDB.books[question2] = rate2;
+
+// Shartli operatorlar
+// 1. if-else
+let grade = 84;
+
+if (grade >= 90) {
+  console.log("A'lo ");
+} else if (grade >= 80) {
+  console.log("Yaxshi ");
+} else if (grade >= 70) {
+  console.log("Qoniqarli ");
+} else {
+  console.log("Qoniqarsiz");
 }
 
-let question1 = prompt("oxirgi o'qigan kitobingiz nomi?")
-let rate1 = +prompt("kitobga qancha baho berasiz?")
+// ternary operator
+let score = grade >= 90 ? "A'lo" : "Qoniqarli";
 
-let question2 = prompt("oxirgi o'qigan kitobingiz nomi?")   
-let rate2 = +prompt("kitobga qancha baho berasiz?")
-booksDB.books[question1] = rate1;
-booksDB.books[question2] = rate2;
+// switch operatori
+let weeks = 4;
+switch (weeks) {
+  case 1:
+    "Dushanba";
+    break;
+  case 2:
+    "Seshanba";
+    break;
+  case 3:
+    "Chorshanba";
+    break;
+  default:
+    console.log("Bunday kun yoq");
+}
+
+// Sikllar - for, while, do-while, for-in, for-of
+// 1. for
+for (let i = 0; i < 10; i++) {
+  if (i === 6) {
+    continue;
+  }
+  console.log(i);
+}
+
+// 2. while
+let a = 2;
+while (a < 10) {
+  console.log(a);
+  a++;
+}
+
+// 3. do-while
+let b = 2;
+do {
+  console.log(b);
+  b++;
+} while (b < 9);
+
+// 4. for-in
+let student = {
+  name: "kimdir",
+  age: 21,
+  hobby: "learn english",
+};
+
+for (let xususiyat in student) {
+  console.log(xususiyat + ":" + student[xususiyat]);
+}
+
+// 4. for-of
+let families = ["mother", "father", "sister", "brother"];
+for (let family of families) {
+  console.log(family);
+}
+
 
