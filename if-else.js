@@ -384,3 +384,5 @@ let x = 5;
 // // 4. Natijani chiqaramiz
 // console.log("Eng katta raqam: " + engKatta);
 // console.log("Turgan o'rni (indeksi): " + engKattaIndex);
+
+

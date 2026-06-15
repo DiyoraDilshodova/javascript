@@ -67,13 +67,27 @@ console.log(`My name is ${firstName} ${lastName}, i'm ${ages} years old`);
 //   private: false,
 // };
 
-// let question1 = prompt("oxirgi o'qigan kitobingiz nomi?");
-// let rate1 = +prompt("kitobga qancha baho berasiz?");
+// setFavoriteSeries()
+// function setFavoriteSeries() {
+//   for (let i = 0; i < 2; i++) {
+//   const a  = prompt(`oxirgi korgan serialingiz ${i}?`, " "); 
+//   const b  = prompt(`nechi baxo berasiz ${i}?`, " "); 
 
-// let question2 = prompt("oxirgi o'qigan kitobingiz nomi?");
-// let rate2 = +prompt("kitobga qancha baho berasiz?");
-// booksDB.books[question1] = rate1;
-// booksDB.books[question2] = rate2;
+//   if (a != null && b != null && a != "" && b != "" ) {
+//     seriesDB.series[a] = b;
+// } else {
+//   i--;
+// }
+// }
+// }
+
+// if (seriesDB.count < 5) {
+//   console.log("kam serial korgan ekansiz");
+// } else if (seriesDB.count >= 5 && seriesDB.count < 10) {
+//   log("siz klassik tomoshabinsiz");
+// } else if (seriesDB.count >= 10) {
+//   console.log("siz serial ishqibozisiz");
+// }
 
 // Shartli operatorlar
 // 1. if-else
@@ -148,4 +162,15 @@ for (let family of families) {
   console.log(family);
 }
 
+// Tayinlash operatolrari
+// 1. x += y ===> x = x + y
+// 2. x -= y ===> x = x + y
+// 3. x *= y ===> x = x * y
+// 4. x /= y ===> x = x / y
+// 5. x %= y ===> x = x % y
+// 6. x **= y ===> x = x ** y
 
+// operatorlar
+// raqam va matematik
+// 1. toFixed() - Verguldan keyin nechta raqam qolishini belgilash
+// 2. parseInt() / parseFloat() — Matn shaklidagi sonni butun yoki haqiqiy songa o'tkazish.
